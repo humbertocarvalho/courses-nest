@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Put,
+  Delete,
+} from '@nestjs/common';
 import { Item } from './dto/Item';
 
 @Controller('items')
@@ -9,12 +17,17 @@ export class ItemsController {
   }
 
   @Get(':id')
-  findOne(@Param() params): string {
-    return `Item ${params.id}`;
+  findOne(@Param('id') id): string {
+    return `Item ${id}`;
   }
 
   @Post()
   create(@Body() item: Item): string {
     return `Name: ${item.name} Description ${item.description}`;
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: number): string {
+    return `Deleted ${id}`;
   }
 }
