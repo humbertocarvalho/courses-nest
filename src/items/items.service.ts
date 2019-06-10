@@ -20,4 +20,8 @@ export class ItemsService {
   findAll(): IItem[] {
     return this.items;
   }
+
+  findOne(id: string): IItem {
+    return this.items.find(item => item.id == id);
+  }
 }
