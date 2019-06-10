@@ -16,4 +16,8 @@ export class ItemsService {
       description: 'This is item 2',
     },
   ];
+
+  findAll(): IItem[] {
+    return this.items;
+  }
 }
