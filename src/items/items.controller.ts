@@ -8,12 +8,16 @@ import {
   Delete,
 } from '@nestjs/common';
 import { Item } from './dto/Item';
+import { ItemsService } from './items.service';
+import { IItem } from './interfaces/item.interface';
 
 @Controller('items')
 export class ItemsController {
+  constructor(private readonly itemService: ItemsService) {}
+
   @Get()
-  findAll(): string {
-    return 'Get all items';
+  findAll(): IItem[] {
+    return this.itemService.findAll();
   }
 
   @Get(':id')
